@@ -8,14 +8,57 @@
 
 @section('content')
 
-<a href="{{ route('pedidos.create') }}" class="btn btn-primary mb-3">
-    Novo Pedido
-</a>
-
 <div class="card">
+
     <div class="card-body">
 
-        <table class="table table-bordered">
+        <form method="GET" action="{{ route('pedidos.index') }}">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Buscar por cliente</label>
+
+                        <input
+                            type="text"
+                            name="nome_cliente"
+                            class="form-control"
+                            placeholder="Digite o nome do cliente"
+                            value="{{ request('nome_cliente') }}"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-md-2" style="margin-top:30px">
+
+                    <button class="btn btn-primary">
+                        Buscar
+                    </button>
+
+                    <a href="{{ route('pedidos.index') }}"
+                       class="btn btn-secondary">
+                        Limpar
+                    </a>
+
+                </div>
+
+                <div class="col-md-6 text-right" style="margin-top:30px">
+
+                    <a href="{{ route('pedidos.create') }}"
+                       class="btn btn-success">
+                        Novo Pedido
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <hr>
+
+        <table class="table table-bordered table-striped">
 
             <thead>
                 <tr>
@@ -28,13 +71,19 @@
             </thead>
 
             <tbody>
-                @foreach($pedidos as $pedido)
+
+                @forelse($pedidos as $pedido)
 
                     <tr>
                         <td>{{ $pedido->id }}</td>
+
                         <td>{{ $pedido->descricao }}</td>
+
                         <td>{{ $pedido->nome_cliente }}</td>
-                        <td>R$ {{ $pedido->total }}</td>
+
+                        <td>
+                            R$ {{ number_format($pedido->total, 2, ',', '.') }}
+                        </td>
 
                         <td>
 
@@ -55,7 +104,8 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="btn btn-danger btn-sm">
+                                <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Excluir pedido?')">
                                     Excluir
                                 </button>
 
@@ -64,14 +114,26 @@
                         </td>
                     </tr>
 
-                @endforeach
+                @empty
+
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            Nenhum pedido encontrado
+                        </td>
+                    </tr>
+
+                @endforelse
+
             </tbody>
 
         </table>
 
-        {{ $pedidos->links() }}
+        <div class="mt-3">
+            {{ $pedidos->links() }}
+        </div>
 
     </div>
+
 </div>
 
 @stop

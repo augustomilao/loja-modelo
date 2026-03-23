@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\DB;
 
 class PedidoController extends Controller
 {
-    public function index()
-    {
-        $pedidos = Pedido::latest()->paginate(50);
+    public function index(Request $request)
+{
+    $pedidos = Pedido::query()
+        ->when($request->nome_cliente, function ($query, $nome) {
+            $query->where('nome_cliente', 'like', "%{$nome}%");
+        })
+        ->latest()
+        ->paginate(10)
+        ->withQueryString();
 
-        return view('pedidos.index', compact('pedidos'));
-    }
+    return view('pedidos.index', compact('pedidos'));
+}
 
     public function create()
     {
