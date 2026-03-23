@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransportadoraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     // resource sempre por último
     Route::resource('pedidos', PedidoController::class);
+    Route::resource('transportadoras', TransportadoraController::class);
 });
 
 require __DIR__ . '/auth.php';
