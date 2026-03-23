@@ -4,10 +4,9 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportadoraController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
@@ -21,15 +20,18 @@ Route::middleware('auth')->group(function () {
         ->name('profile.destroy');
 
     // exportações
-    Route::get('pedidos/export',
+    Route::get(
+        'pedidos/export',
         [PedidoController::class, 'export']
     )->name('pedidos.export');
 
-    Route::get('pedidos/downloads',
+    Route::get(
+        'pedidos/downloads',
         [PedidoController::class, 'downloads']
     )->name('pedidos.downloads');
 
-    Route::get('pedidos/download/{id}',
+    Route::get(
+        'pedidos/download/{id}',
         [PedidoController::class, 'download']
     )->name('pedidos.download');
 

@@ -302,7 +302,7 @@ return [
 
         [
             'text' => 'Dashboard',
-            'url'  => 'dashboard',
+            'url'  => '/',
             'icon' => 'fas fa-fw fa-home',
         ],
 
