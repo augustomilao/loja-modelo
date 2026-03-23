@@ -11,7 +11,7 @@ class PedidoController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::latest()->paginate(10);
+        $pedidos = Pedido::latest()->paginate(50);
 
         return view('pedidos.index', compact('pedidos'));
     }
