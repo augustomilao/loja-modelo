@@ -317,13 +317,19 @@ return [
             'url'  => 'transportadoras',
             'icon' => 'fas fa-fw fa-truck',
         ],
-
+        
         [
-            'text' => 'Logout',
-            'route' => 'logout',
-            'method' => 'post',
-            'icon' => 'fas fa-fw fa-sign-out-alt',
+            'text' => 'Documentação',
+            'url'  => 'docs',
+            'icon' => 'fas fa-fw fa-clipboard',
         ],
+
+        // [
+        //     'text' => 'Logout',
+        //     'route' => 'logout',
+        //     'method' => 'post',
+        //     'icon' => 'fas fa-fw fa-sign-out-alt',
+        // ],
     ],
 
     /*
