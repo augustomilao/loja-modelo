@@ -308,7 +308,7 @@ return [
 
         [
             'text' => 'Pedidos',
-            'url'  => 'pedidos',
+            'route' => 'pedidos.index',
             'icon' => 'fas fa-fw fa-shopping-cart',
         ],
 
