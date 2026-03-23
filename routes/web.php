@@ -6,7 +6,7 @@ use App\Http\Controllers\TransportadoraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
@@ -35,9 +35,12 @@ Route::middleware('auth')->group(function () {
         [PedidoController::class, 'download']
     )->name('pedidos.download');
 
+
     // resource sempre por último
     Route::resource('pedidos', PedidoController::class);
     Route::resource('transportadoras', TransportadoraController::class);
 });
+
+
 
 require __DIR__ . '/auth.php';

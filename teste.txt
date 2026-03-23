@@ -1,0 +1,18 @@
+chamado api
+
+{
+    "descricao": "Pedido pela API",
+    "nome_cliente": "Augusto",
+    "itens": [
+        {
+            "produto": "Iphone 15",
+            "preco": 5000,
+            "quantidade": 1
+        },
+        {
+            "produto": "Capinha",
+            "preco": 50,
+            "quantidade": 2
+        }
+    ]
+}
