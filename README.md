@@ -66,16 +66,16 @@ O projeto atende ao desafio de criar uma aplicação web com os seguintes requis
 ## 🖼 Demonstração do sistema
 
 Dashboard:
-![Dashboard](resources/views/docs/images/dashboard.png)  
+![Dashboard](resources/views/docs/dashboard.png)  
 
 Pedidos:
-![Pedidos](resources/views/docs/images/pedidos.png) 
+![Pedidos](resources/views/docs/pedidos.png) 
 
 Downloads de Relatórios:
-![Downloads](resources/views/docs/images/download_csv.png) 
+![Downloads](resources/views/docs/download_csv.png) 
 
 Transportadoras:
-![Transportadoras](resources/views/docs/images/transportadoras.png)  
+![Transportadoras](resources/views/docs/transportadoras.png)  
 
 Documentacao API:
-![Documentação](resources/views/docs/images/documentacao.png)  
+![Documentação](resources/views/docs/documentacao.png)  
