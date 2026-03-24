@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportadoraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentationController;
 
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
         'pedidos/download/{id}',
         [PedidoController::class, 'download']
     )->name('pedidos.download');
+
+    Route::get('docs', [DocumentationController::class , 'index'])->name('docs');
 
 
     // resource sempre por último
