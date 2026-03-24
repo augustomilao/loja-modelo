@@ -19,7 +19,7 @@ class PedidoController extends Controller
                 $query->where('nome_cliente', 'like', "%{$nome}%");
             })
             ->latest()
-            ->paginate(10)
+            ->paginate(50)
             ->withQueryString();
 
         return view('pedidos.index', compact('pedidos'));
