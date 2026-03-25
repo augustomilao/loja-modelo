@@ -20,6 +20,8 @@
                     <th>Arquivo</th>
                     <th>Filtro</th>
                     <th>Status</th>
+                        <th>Criado em</th>
+                        <th>Tempo de Execução</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -27,7 +29,6 @@
             <tbody>
 
                 @forelse($exports as $export)
-
                     <tr>
 
                         <td>{{ $export->id }}</td>
@@ -38,35 +39,36 @@
                             {{ $export->nome_cliente ?? 'Todos' }}
                         </td>
 
+                            <td>
+                                {{ $export->created_at }}
+                            </td>
+
+                            <td>
+                                {{ $export->created_at->diffInSeconds($export->updated_at) }} Segundos
+                            </td>
+
                         <td>
 
-                            @if($export->status == 'processing')
-                                <span class="badge badge-warning">
-                                    Processando
-                                </span>
+                                @if ($export->status == 'processing')
+                                    <span class="badge badge-warning">Processando</span>
+                                @elseif($export->status == 'completed')
+                                    <span class="badge badge-success">Pronto</span>
                             @else
-                                <span class="badge badge-success">
-                                    Pronto
-                                </span>
+                                    <span class="badge badge-danger">Erro</span>
                             @endif
 
                         </td>
 
                         <td>
 
-                            @if($export->status == 'completed')
-
-                                <a href="{{ route('pedidos.download', $export->id) }}"
-                                   class="btn btn-success btn-sm">
+                                @if ($export->status == 'completed')
+                                    <a href="{{ route('pedidos.download', $export->id) }}" class="btn btn-success btn-sm">
                                     Baixar
                                 </a>
-
                             @else
-
                                 <span class="text-muted">
                                     Aguarde
                                 </span>
-
                             @endif
 
                         </td>
@@ -80,7 +82,6 @@
                             Nenhuma exportação encontrada
                         </td>
                     </tr>
-
                 @endforelse
 
             </tbody>

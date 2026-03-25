@@ -16,10 +16,10 @@ class PedidoController extends Controller
     {
         $pedidos = Pedido::query()
             ->when($request->nome_cliente, function ($query, $nome) {
-                $query->where('nome_cliente', 'like', "%{$nome}%");
+                $query->where('nome_cliente', 'like', "{$nome}%");
             })
-            ->latest()
-            ->paginate(50)
+            ->orderByDesc('id')
+            ->cursorPaginate(50)
             ->withQueryString();
 
         return view('pedidos.index', compact('pedidos'));

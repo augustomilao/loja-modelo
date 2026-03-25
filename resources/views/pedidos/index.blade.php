@@ -70,8 +70,7 @@
         </table>
 
         <div class="mt-3">
-            {{-- Paginação compacta sem ícones --}}
-            {{ $pedidos->onEachSide(1)->links('pagination::simple-bootstrap-4') }}
+            {{ $pedidos->links('pagination::simple-bootstrap-4') }}
         </div>
 
     </div>
